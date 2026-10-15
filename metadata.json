@@ -1,0 +1,8 @@
+{
+  "name": "Learned - Interactive Python Lab",
+  "description": "An interactive web-based Python workbook and experimentation lab ported from akhand-dev/learned, featuring live execution of print mechanics, operators, file redirection, and countdown timers.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
