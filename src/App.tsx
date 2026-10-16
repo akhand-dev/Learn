@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Header, ActiveTab } from './components/Header';
 import { Overview } from './components/Overview';
+import { VSCodeIDE } from './components/VSCodeIDE/VSCodeIDE';
 import { LearnedJournal } from './components/LearnedJournal';
 import { MyProjectsLab } from './components/MyProjectsLab';
 import { CountdownLab } from './components/CountdownLab';
@@ -10,10 +11,12 @@ import { TerminalRunner } from './components/TerminalRunner';
 import { VirtualFileSystem } from './components/VirtualFileSystem';
 import { ORIGINAL_SCRIPTS } from './data/scriptsData';
 import { learningStorage } from './services/learningStorage';
+import { virtualWorkspace } from './services/virtualWorkspace';
 
 export const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<ActiveTab>('overview');
+  const [activeTab, setActiveTab] = useState<ActiveTab>('vscode');
   const [replInitialCode, setReplInitialCode] = useState<string>('');
+  const [selectedFileForIDE, setSelectedFileForIDE] = useState<string>('learned-print-basics');
 
   // Counts for topics and projects
   const [learnedCount, setLearnedCount] = useState<number>(() => learningStorage.getTopics().length);
@@ -49,6 +52,23 @@ export const App: React.FC = () => {
     setActiveTab('runner');
   };
 
+  const handleOpenFileInIDE = (targetIdOrName: string) => {
+    const allFiles = virtualWorkspace.getFiles();
+    // Try matching by id, name, or path
+    const match = allFiles.find(
+      (f) =>
+        f.id === targetIdOrName ||
+        f.name === targetIdOrName ||
+        f.path === targetIdOrName ||
+        f.path.includes(targetIdOrName) ||
+        targetIdOrName.includes(f.name)
+    );
+    if (match) {
+      setSelectedFileForIDE(match.id);
+    }
+    setActiveTab('vscode');
+  };
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-sky-500/30 selection:text-sky-200">
       {/* Top Navigation */}
@@ -61,7 +81,11 @@ export const App: React.FC = () => {
       />
 
       {/* Main Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        {activeTab === 'vscode' && (
+          <VSCodeIDE initialFileId={selectedFileForIDE} />
+        )}
+
         {activeTab === 'overview' && (
           <Overview
             onNavigate={setActiveTab}
@@ -72,11 +96,17 @@ export const App: React.FC = () => {
         )}
 
         {activeTab === 'learned' && (
-          <LearnedJournal onOpenInRunner={handleOpenSnippetInREPL} />
+          <LearnedJournal
+            onOpenInRunner={handleOpenSnippetInREPL}
+            onOpenInIDE={handleOpenFileInIDE}
+          />
         )}
 
         {activeTab === 'my-projects' && (
-          <MyProjectsLab onOpenInRunner={handleOpenSnippetInREPL} />
+          <MyProjectsLab
+            onOpenInRunner={handleOpenSnippetInREPL}
+            onOpenInIDE={handleOpenFileInIDE}
+          />
         )}
 
         {activeTab === 'countdown' && <CountdownLab />}
@@ -106,19 +136,19 @@ export const App: React.FC = () => {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-slate-900 bg-slate-950/80 py-6 text-xs text-slate-500">
+      <footer className="border-t border-slate-900 bg-slate-950/80 py-4 text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2">
           <div className="flex items-center space-x-2">
-            <span>akhand-dev / learned</span>
+            <span className="font-bold text-slate-400">akhand-dev / learned</span>
             <span>•</span>
-            <span>Practice Python, Log What You Learn, Store Projects</span>
+            <span>VS Code Python Environment: <code className="text-sky-400">learned/</code> and <code className="text-indigo-400">projects/</code></span>
           </div>
           <div className="flex items-center space-x-3 text-slate-400">
-            <span>React 19</span>
+            <span>Ctrl+S to Save</span>
             <span>•</span>
-            <span>TypeScript</span>
+            <span>F5 to Run</span>
             <span>•</span>
-            <span>Tailwind CSS</span>
+            <span>Python 3.12</span>
           </div>
         </div>
       </footer>

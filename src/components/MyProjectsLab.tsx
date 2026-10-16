@@ -19,9 +19,10 @@ import { PROJECT_TEMPLATES } from '../data/initialLearnedData';
 
 interface MyProjectsLabProps {
   onOpenInRunner?: (code: string) => void;
+  onOpenInIDE?: (fileNameOrId: string) => void;
 }
 
-export const MyProjectsLab: React.FC<MyProjectsLabProps> = ({ onOpenInRunner: _onOpenInRunner }) => {
+export const MyProjectsLab: React.FC<MyProjectsLabProps> = ({ onOpenInRunner: _onOpenInRunner, onOpenInIDE }) => {
   const [projects, setProjects] = useState<UserProject[]>(() => learningStorage.getProjects());
   const [selectedProjectId, setSelectedProjectId] = useState<string>(() => {
     const list = learningStorage.getProjects();
@@ -339,6 +340,17 @@ export const MyProjectsLab: React.FC<MyProjectsLabProps> = ({ onOpenInRunner: _o
                 </div>
 
                 <div className="flex items-center space-x-2">
+                  {onOpenInIDE && (
+                    <button
+                      onClick={() => onOpenInIDE(activeProject.fileName)}
+                      className="flex items-center space-x-1.5 px-3 py-1.5 bg-sky-500/15 hover:bg-sky-500/25 text-sky-300 text-xs rounded-lg border border-sky-500/30 transition cursor-pointer font-bold"
+                      title="Open in VS Code Editor"
+                    >
+                      <Terminal className="w-3.5 h-3.5" />
+                      <span>Open in VS Code</span>
+                    </button>
+                  )}
+
                   <button
                     onClick={handleSaveChanges}
                     className="flex items-center space-x-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs rounded-lg border border-slate-700 transition cursor-pointer"

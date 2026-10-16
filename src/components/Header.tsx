@@ -7,10 +7,12 @@ import {
   FolderTree,
   Code2,
   BookOpen,
-  FolderCode
+  FolderCode,
+  Laptop
 } from 'lucide-react';
 
 export type ActiveTab =
+  | 'vscode'
   | 'overview'
   | 'learned'
   | 'my-projects'
@@ -36,6 +38,7 @@ export const Header: React.FC<HeaderProps> = ({
   projectsCount,
 }) => {
   const tabs = [
+    { id: 'vscode', label: 'VS Code Editor', icon: Laptop, count: 'IDE', isPrimary: true },
     { id: 'overview', label: 'Overview', icon: Code2, count: null },
     { id: 'learned', label: 'What I Learned', icon: BookOpen, count: `${learnedCount} topics` },
     { id: 'my-projects', label: 'My Projects', icon: FolderCode, count: `${projectsCount} proj` },
@@ -65,27 +68,38 @@ export const Header: React.FC<HeaderProps> = ({
                   akhand-dev / <span className="text-sky-400">learned</span>
                 </h1>
                 <span className="px-2 py-0.5 text-xs font-semibold rounded-full bg-sky-500/10 text-sky-300 border border-sky-500/20">
-                  Python Practice & Journal
+                  VS Code Python Studio
                 </span>
               </div>
               <p className="text-xs text-slate-400">
-                Track, practice Python & store your projects
+                Edit & save learned files in <code className="text-sky-300 font-mono">learned/</code> and projects in <code className="text-indigo-300 font-mono">projects/</code>
               </p>
             </div>
           </div>
 
-          {/* Quick Badges */}
+          {/* Quick Badges & Quick Launch */}
           <div className="hidden md:flex items-center space-x-2">
             <button
+              onClick={() => onTabChange('vscode')}
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border text-xs font-mono font-bold transition cursor-pointer ${
+                activeTab === 'vscode'
+                  ? 'bg-sky-500 text-slate-950 border-sky-400 shadow-md shadow-sky-500/20'
+                  : 'bg-slate-800 hover:bg-slate-700 text-sky-300 border-sky-500/30'
+              }`}
+            >
+              <Laptop className="w-4 h-4" />
+              <span>Launch VS Code IDE</span>
+            </button>
+            <button
               onClick={() => onTabChange('learned')}
-              className="flex items-center space-x-1.5 px-3 py-1 rounded-lg bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/30 text-xs text-sky-300 font-mono transition cursor-pointer"
+              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/30 text-xs text-sky-300 font-mono transition cursor-pointer"
             >
               <BookOpen className="w-3.5 h-3.5 text-sky-400" />
-              <span>{learnedCount} Learned Topics</span>
+              <span>{learnedCount} Learned</span>
             </button>
             <button
               onClick={() => onTabChange('my-projects')}
-              className="flex items-center space-x-1.5 px-3 py-1 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/30 text-xs text-indigo-300 font-mono transition cursor-pointer"
+              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/30 text-xs text-indigo-300 font-mono transition cursor-pointer"
             >
               <FolderCode className="w-3.5 h-3.5 text-indigo-400" />
               <span>{projectsCount} Projects</span>

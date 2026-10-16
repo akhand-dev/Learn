@@ -50,28 +50,28 @@ export const Overview: React.FC<OverviewProps> = ({
 
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <button
-              onClick={() => onNavigate('learned')}
+              onClick={() => onNavigate('vscode')}
               className="flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-semibold text-sm shadow-lg shadow-sky-500/25 transition cursor-pointer"
             >
-              <BookOpen className="w-4 h-4" />
-              <span>See What I Have Learned ({learnedCount})</span>
+              <Terminal className="w-4 h-4" />
+              <span>Open VS Code IDE (learned/ & projects/)</span>
               <ArrowRight className="w-4 h-4" />
             </button>
 
             <button
-              onClick={() => onNavigate('my-projects')}
-              className="flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold text-sm transition cursor-pointer"
+              onClick={() => onNavigate('learned')}
+              className="flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold text-sm transition cursor-pointer"
             >
-              <FolderCode className="w-4 h-4 text-indigo-400" />
-              <span>My Projects ({projectsCount})</span>
+              <BookOpen className="w-4 h-4 text-sky-400" />
+              <span>Learned Topics ({learnedCount})</span>
             </button>
 
             <button
-              onClick={() => onNavigate('countdown')}
-              className="flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-300 border border-slate-800 text-sm font-medium transition cursor-pointer"
+              onClick={() => onNavigate('my-projects')}
+              className="flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold text-sm transition cursor-pointer"
             >
-              <Timer className="w-4 h-4 text-amber-400" />
-              <span>Countdown Lab</span>
+              <FolderCode className="w-4 h-4 text-indigo-400" />
+              <span>Projects ({projectsCount})</span>
             </button>
           </div>
         </div>

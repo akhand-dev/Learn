@@ -77,9 +77,10 @@ Mapped: [11, 12, 13]`,
 
 interface LearnedJournalProps {
   onOpenInRunner?: (code: string) => void;
+  onOpenInIDE?: (fileNameOrId: string) => void;
 }
 
-export const LearnedJournal: React.FC<LearnedJournalProps> = ({ onOpenInRunner }) => {
+export const LearnedJournal: React.FC<LearnedJournalProps> = ({ onOpenInRunner, onOpenInIDE }) => {
   const [topics, setTopics] = useState<LearnedTopic[]>(() => learningStorage.getTopics());
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
@@ -448,13 +449,23 @@ export const LearnedJournal: React.FC<LearnedJournalProps> = ({ onOpenInRunner }
                           )}
                         </button>
 
+                        {onOpenInIDE && (
+                          <button
+                            onClick={() => onOpenInIDE(topic.id)}
+                            className="hover:text-emerald-300 transition flex items-center space-x-1 cursor-pointer text-sky-400"
+                            title="Open in VS Code Editor"
+                          >
+                            <ExternalLink className="w-3 h-3" />
+                            <span className="text-[10px] font-bold">VS Code</span>
+                          </button>
+                        )}
+
                         {onOpenInRunner && (
                           <button
                             onClick={() => onOpenInRunner(topic.codeSnippet)}
                             className="hover:text-sky-300 transition flex items-center space-x-1 cursor-pointer"
                             title="Open in REPL"
                           >
-                            <ExternalLink className="w-3 h-3" />
                             <span className="text-[10px]">REPL</span>
                           </button>
                         )}
