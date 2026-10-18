@@ -383,7 +383,203 @@ def get_developer_joke():
 print("Generated Joke:", get_developer_joke())
 `,
   },
+  {
+    id: 'learned-comments-repl',
+    name: '13_comments_and_repl.py',
+    path: 'learned/13_comments_and_repl.py',
+    folder: 'learned',
+    summary: 'Python REPL usage and commenting syntax (single and multi-line).',
+    notes: 'The REPL is an interactive sandbox. Use # for single-line comments and triple quotes (\'\'\' or """) for multi-line comments and strings.',
+    tags: ['repl', 'comments', 'syntax'],
+    mastery: 'mastered',
+    revisionCount: 1,
+    lastRevised: '2026-10-18',
+    createdAt: '2026-10-18',
+    updatedAt: '2026-10-18',
+    content: `# ==========================================
+# LEARNED: Python REPL and Commenting Syntax
+# ==========================================
 
+# 1. Python REPL (Read-Evaluate-Print Loop)
+# Entering 'python' in your terminal starts the REPL.
+# It acts as an interactive calculator and sandbox:
+# >>> 2 + 2
+# 4
+# >>> print('hello')
+# hello
+
+# 2. Single-line comments
+# Everything after # is ignored by Python.
+
+# 3. Multi-line comments
+'''
+This is a multi-line comment.
+It is often used for docstrings 
+or explaining complex sections.
+'''
+
+"""
+You can also use triple double quotes.
+"""
+
+# 4. Multi-line strings in print()
+print("""
+This is a multi-line string.
+It will print exactly as formatted,
+including newlines!
+""")
+`,
+  },
+  {
+    id: 'learned-variables-types',
+    name: '14_variables_types.py',
+    path: 'learned/14_variables_types.py',
+    folder: 'learned',
+    summary: 'Variables, data types, naming rules, operators, and type conversion.',
+    notes: 'Variables are containers. Types: int, float, str, bool, None. Input is always string, cast with int() or float() for math.',
+    tags: ['variables', 'data-types', 'operators', 'casting', 'input'],
+    mastery: 'mastered',
+    revisionCount: 1,
+    lastRevised: '2026-10-18',
+    createdAt: '2026-10-18',
+    updatedAt: '2026-10-18',
+    content: `# ==========================================
+# LEARNED: Variables, Data Types & Operators
+# ==========================================
+
+# 1. Variables and Data Types
+name = "Akhand"        # str
+age = 25               # int
+rating = 4.9           # float
+is_active = True       # bool
+data = None            # NoneType
+
+# 2. Variable Naming Rules
+# Allowed: letters, digits, underscores (_)
+# MUST start with letter or _
+# NOT allowed: whitespace, special chars like @
+
+# 3. Operators
+# Arithmetic: + - * / % **
+# Assignment: = += -= *= /=
+# Comparison: == > < >= <= != (returns bool)
+# Logical: AND, OR, NOT
+
+# 4. Input & Type Casting
+user_input = input("Enter a number: ") # Always string
+num = int(user_input)                 # Explicit casting
+print(f"Double is: {num * 2}")
+
+# Type inspection
+print(type(num))
+`,
+  },
+  {
+    id: 'learned-strings',
+    name: '15_strings_basics.py',
+    path: 'learned/15_strings_basics.py',
+    folder: 'learned',
+    summary: 'String properties, indexing, slicing, methods, and escape sequences.',
+    notes: 'Strings are immutable. Slicing: [start:end:step]. Methods: len(), find(), replace(). Escapes: \\n, \\t.',
+    tags: ['strings', 'slicing', 'methods', 'escape'],
+    mastery: 'mastered',
+    revisionCount: 1,
+    lastRevised: '2026-10-18',
+    createdAt: '2026-10-18',
+    updatedAt: '2026-10-18',
+    content: `# ==========================================
+# LEARNED: String Properties, Slicing & Methods
+# ==========================================
+
+# 1. Properties
+s = "PythonProgramming"
+# Strings are immutable (cannot change characters in place)
+
+# 2. Indexing & Slicing
+print(f"First: {s[0]}, Last: {s[-1]}")
+print(f"Slice (0-6): {s[0:6]}")
+print(f"Skip Slicing (every 2nd): {s[::2]}")
+print(f"Reverse: {s[::-1]}")
+
+# 3. String Methods
+print(f"Length: {len(s)}")
+print(f"Find 'Gram': {s.find('Gram')}")
+print(f"Replace: {s.replace('Python', 'Java')}")
+
+# 4. Escape Sequences
+print("Line1\\nLine2")
+print("Tab\\tTabbed")
+`,
+  },
+  {
+    id: 'learned-lists-tuples',
+    name: '16_lists_and_tuples.py',
+    path: 'learned/16_lists_and_tuples.py',
+    folder: 'learned',
+    summary: 'Lists (mutable) vs. Tuples (immutable), methods, and operations.',
+    notes: 'Lists: .append(), .sort(), .pop(). Tuples: () syntax, trailing comma for single element (1,), unpacking.',
+    tags: ['lists', 'tuples', 'data-structures'],
+    mastery: 'mastered',
+    revisionCount: 1,
+    lastRevised: '2026-10-18',
+    createdAt: '2026-10-18',
+    updatedAt: '2026-10-18',
+    content: `# ==========================================
+# LEARNED: Lists & Tuples
+# ==========================================
+
+# 1. Lists (Mutable)
+my_list = [3, 1, 2]
+my_list.append(4)
+my_list.sort()
+my_list.insert(0, 0)
+print(f"List: {my_list}, Sum: {sum(my_list)}")
+
+# 2. Tuples (Immutable)
+my_tuple = (10, 20, 30)
+# my_tuple[0] = 5 # This would raise an error!
+single_tuple = (1,)
+print(f"Tuple: {my_tuple}, Count of 10: {my_tuple.count(10)}")
+
+# 3. Tuple Unpacking
+a, b, c = my_tuple
+print(f"Unpacked: a={a}, b={b}, c={c}")
+`,
+  },
+  {
+    id: 'learned-dictionaries-sets',
+    name: '17_dictionaries_and_sets.py',
+    path: 'learned/17_dictionaries_and_sets.py',
+    folder: 'learned',
+    summary: 'Dictionaries (key-value) and Sets (unique).',
+    notes: 'Dicts: Unordered, mutable, indexed by keys. .get() is safe. Sets: Unordered, unique, {}. Empty set is set().',
+    tags: ['dictionaries', 'sets', 'data-structures'],
+    mastery: 'mastered',
+    revisionCount: 1,
+    lastRevised: '2026-10-18',
+    createdAt: '2026-10-18',
+    updatedAt: '2026-10-18',
+    content: `# ==========================================
+# LEARNED: Dictionaries & Sets
+# ==========================================
+
+# 1. Dictionaries (Key-Value)
+d = {"name": "Akhand", "age": 25}
+d.update({"city": "Delhi"})
+print(f"Dict: {d}, Name: {d.get('name')}, Missing: {d.get('email', 'N/A')}")
+
+# 2. Sets (Unique)
+my_set = {1, 2, 2, 3}
+my_set.add(4)
+empty_set = set() # {} creates dict!
+print(f"Set: {my_set}")
+
+# 3. Set Operations
+s1 = {1, 2, 3}
+s2 = {3, 4, 5}
+print(f"Union: {s1.union(s2)}, Intersection: {s1.intersection(s2)}")
+`,
+  },
   // PROJECTS FOLDER
   {
     id: 'project-countdown',
@@ -545,6 +741,110 @@ for task_id, item in todos.items():
     createdAt: '2026-10-05',
     updatedAt: '2026-10-15',
     content: `print('hello, it is created by start1.py')
+`,
+  },
+  {
+    id: 'learned-loops',
+    name: '18_loops.py',
+    path: 'learned/18_loops.py',
+    folder: 'learned',
+    summary: 'Loops (while, for), range() function, and loop control (break, continue, pass, for-else).',
+    notes: 'while: repeats while true. for: iterates sequences. range(): generates sequences. Control: break, continue, pass, for-else.',
+    tags: ['loops', 'control-flow', 'iteration'],
+    mastery: 'learning',
+    revisionCount: 1,
+    lastRevised: '2026-10-18',
+    createdAt: '2026-10-18',
+    updatedAt: '2026-10-18',
+    content: `# ==========================================
+# LEARNED: Loops in Python
+# ==========================================
+
+# 1. while loop
+count = 0
+while count < 3:
+    print(f"While count: {count}")
+    count += 1
+
+# 2. for loop with range()
+# range(start, stop, step)
+for i in range(0, 5, 2):
+    print(f"For loop with range: {i}")
+
+# 3. Loop Control Statements
+for i in range(5):
+    if i == 1: continue     # Skip 1
+    if i == 4: break        # Exit at 4
+    if i == 2: pass         # Placeholder
+    print(f"Item: {i}")
+else:
+    print("Loop finished naturally")
+`,
+  },
+  {
+    id: 'learned-functions-recursion',
+    name: '19_functions_recursion.py',
+    path: 'learned/19_functions_recursion.py',
+    folder: 'learned',
+    summary: 'Function definitions, arguments, return values, default parameters, and recursion.',
+    notes: 'def defines functions. Use return for output. Default parameters handle missing args. Recursion needs a base case.',
+    tags: ['functions', 'recursion', 'basics'],
+    mastery: 'learning',
+    revisionCount: 1,
+    lastRevised: '2026-10-18',
+    createdAt: '2026-10-18',
+    updatedAt: '2026-10-18',
+    content: `# ==========================================
+# LEARNED: Functions & Recursion
+# ==========================================
+
+# 1. Defining and Calling Functions
+def greet(name="User"):
+    return f"Hello, {name}!"
+
+print(greet("Akhand")) # Call with arg
+print(greet())         # Call with default
+
+# 2. Recursion
+# A function calling itself. 
+# Base condition is CRITICAL to avoid Stack Overflow!
+def factorial(n):
+    if n == 1: return 1
+    return n * factorial(n - 1)
+
+print(f"Factorial of 5: {factorial(5)}")
+`,
+  },
+  {
+    id: 'learned-file-io',
+    name: '20_file_io.py',
+    path: 'learned/20_file_io.py',
+    folder: 'learned',
+    summary: 'Opening files, modes (r, w, a), reading/writing methods, and using context managers.',
+    notes: 'Files provide permanent storage. Use open(path, mode). Modes: r, w, a, b. The with statement automatically closes files.',
+    tags: ['file-io', 'persistence'],
+    mastery: 'learning',
+    revisionCount: 1,
+    lastRevised: '2026-10-18',
+    createdAt: '2026-10-18',
+    updatedAt: '2026-10-18',
+    content: `# ==========================================
+# LEARNED: File I/O
+# ==========================================
+
+# 1. Writing with 'w' (overwrite)
+with open('data.txt', 'w') as f:
+    f.write("Line 1\\nLine 2\\n")
+
+# 2. Appending with 'a'
+with open('data.txt', 'a') as f:
+    f.write("Line 3 (Appended)")
+
+# 3. Reading with 'r'
+with open('data.txt', 'r') as f:
+    content = f.read()
+    print("--- File Content ---")
+    print(content)
 `,
   },
 ];

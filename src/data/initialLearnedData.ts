@@ -71,8 +71,7 @@ print("Done!")`,
     summary: 'Forcing the I/O stream buffer to immediately render text on screen without waiting for loop completion.',
     notes: 'Python normally buffers terminal I/O for performance. Setting flush=True is critical for real-time progress bars, timers, and animations.',
     codeSnippet: `import time
-
-for i in range(2):
+\nfor i in range(2):
     print(i, end=" ", flush=True)
     time.sleep(0.5)`,
     sampleOutput: `0 1 `,
@@ -222,6 +221,149 @@ Welcome, Akhand!`,
     mastery: 'practicing',
     tags: ['pip', 'modules', 'pyjokes', 'input'],
     dateLearned: '2026-10-10',
+  },
+  {
+    id: 'topic-comments-repl',
+    title: 'Python REPL & Commenting Syntax',
+    category: 'Basics & Syntax',
+    summary: 'Using the REPL for interactive coding and various commenting techniques.',
+    notes: 'The REPL is an interactive sandbox. Use # for single-line comments and triple quotes for multi-line comments/strings.',
+    codeSnippet: `# Single-line comment
+
+'''
+This is a multi-line
+comment or docstring
+'''
+
+print("""This is a
+multi-line string""")`,
+    sampleOutput: `This is a
+multi-line string`,
+    mastery: 'mastered',
+    tags: ['repl', 'comments', 'syntax'],
+    dateLearned: '2026-10-18',
+  },
+  {
+    id: 'topic-variables-types',
+    title: 'Variables, Data Types & Operators',
+    category: 'Basics & Syntax',
+    summary: 'Memory containers, primary data types, naming rules, operators, and type conversion.',
+    notes: 'Variables are containers. Types: int, float, str, bool, None. Input is always string, cast with int() or float() for math.',
+    codeSnippet: `age = 25               # int
+rating = 4.9           # float
+is_active = True       # bool
+
+# Input requires casting
+user_input = input("Enter a number: ")
+num = int(user_input)
+print(f"Double is: {num * 2}")`,
+    sampleOutput: `Enter a number: 10
+Double is: 20`,
+    mastery: 'mastered',
+    tags: ['variables', 'data-types', 'operators', 'casting', 'input'],
+    dateLearned: '2026-10-18',
+  },
+  {
+    id: 'topic-strings',
+    title: 'Strings: Properties, Slicing & Methods',
+    category: 'Basics & Syntax',
+    summary: 'String immutability, zero-based/negative indexing, slicing syntax, common methods, and escape sequences.',
+    notes: 'Strings are immutable sequences. Use string[start:end:step] for slicing. Methods: len(), find(), replace(), etc. Escape sequences: \\n, \\t, \\", \\\', \\\\.',
+    codeSnippet: `s = "Python"
+print(s[0:3])    # Pyt
+print(s[::-1])   # nohtyP (reverse)
+print(s.replace("P", "p")) # python
+print("New\\nLine")`,
+    sampleOutput: `Pyt
+nohtyP
+python
+New
+Line`,
+    mastery: 'mastered',
+    tags: ['strings', 'slicing', 'methods', 'f-strings'],
+    dateLearned: '2026-10-18',
+  },
+  {
+    id: 'topic-lists-tuples',
+    title: 'Lists & Tuples',
+    category: 'Data Structures',
+    summary: 'Mutable lists vs. immutable tuples, common methods, and operations.',
+    notes: 'Lists: .append(), .sort(), .pop(). Tuples: () syntax, trailing comma for single element (1,), unpacking.',
+    codeSnippet: `my_list = [1, 2, 3]
+my_list.append(4)
+my_tuple = (1, 2)
+a, b = my_tuple`,
+    sampleOutput: `List: [1, 2, 3, 4]
+Tuple: (1, 2)`,
+    mastery: 'mastered',
+    tags: ['lists', 'tuples', 'data-structures', 'mutation'],
+    dateLearned: '2026-10-18',
+  },
+  {
+    id: 'topic-dictionaries-sets',
+    title: 'Dictionaries & Sets',
+    category: 'Data Structures',
+    summary: 'Unordered mutable key-value collections and unordered unique element collections.',
+    notes: 'Dicts: Unique keys, .get() is safe. Sets: Unique elements, {}, empty set must use set().',
+    codeSnippet: `d = {"key": "value"}
+print(d.get("key"))
+s = {1, 2, 2, 3}
+print(s)`,
+    sampleOutput: `value
+{1, 2, 3}`,
+    mastery: 'mastered',
+    tags: ['dictionaries', 'sets', 'data-structures'],
+    dateLearned: '2026-10-18',
+  },
+  {
+    id: 'topic-loops',
+    title: 'Loops in Python (while, for, range)',
+    category: 'Loops & Time',
+    summary: 'Mastering iteration with while and for loops, the range() function, and loop control statements.',
+    notes: 'while repeats while true. for iterates sequences. range(start, stop, step) generates sequences. break/continue/pass manage flow, for-else handles natural completion.',
+    codeSnippet: `for i in range(3):
+    if i == 1: continue
+    print(i)
+else:
+    print("Finished")`,
+    sampleOutput: `0
+2
+Finished`,
+    mastery: 'learning',
+    tags: ['loops', 'iteration', 'control-flow', 'range'],
+    dateLearned: '2026-10-18',
+  },
+  {
+    id: 'topic-functions-recursion',
+    title: 'Functions & Recursion',
+    category: 'Basics & Syntax',
+    summary: 'Mastering modular code with functions, arguments, return values, default parameters, and recursive calls.',
+    notes: 'Functions use def to define reusable blocks. Use return for outputs. Default params set fallback values. Recursion is a function calling itself; needs a base condition to terminate.',
+    codeSnippet: `def factorial(n):
+    if n == 1: return 1
+    return n * factorial(n - 1)
+
+print(factorial(5))`,
+    sampleOutput: `120`,
+    mastery: 'learning',
+    tags: ['functions', 'recursion', 'modularity'],
+    dateLearned: '2026-10-18',
+  },
+  {
+    id: 'topic-file-io',
+    title: 'File I/O (Persistence & Context Managers)',
+    category: 'I/O & Formatting',
+    summary: 'Mastering permanent data storage using file I/O operations and context managers.',
+    notes: 'Use open(filename, mode) for files. Modes: r (read), w (overwrite), a (append), b (binary). The with statement (context manager) automatically closes files, preventing memory leaks.',
+    codeSnippet: `with open('test.txt', 'w') as f:
+    f.write('Hello File!')
+
+with open('test.txt', 'r') as f:
+    print(f.read())`,
+    sampleOutput: `Hello File!`,
+    mastery: 'learning',
+    tags: ['file-io', 'persistence', 'with-open'],
+    dateLearned: '2026-10-18',
   },
 ];
 
