@@ -847,6 +847,80 @@ with open('data.txt', 'r') as f:
     print(content)
 `,
   },
+  {
+    id: 'learned-oop-classes-objects',
+    name: '21_oop_classes_objects.py',
+    path: 'learned/21_oop_classes_objects.py',
+    folder: 'learned',
+    summary: 'OOP fundamentals: Classes, Objects, Class vs Instance Attributes, self, @staticmethod, and __init__().',
+    notes: 'A Class is a blueprint; an Object is an instantiation. Instance attributes take preference over class attributes. self represents the instance calling the method. @staticmethod defines methods without self. __init__() is the constructor dunder method.',
+    tags: ['oop', 'classes', 'objects', '__init__', 'self', 'staticmethod'],
+    mastery: 'learning',
+    revisionCount: 1,
+    lastRevised: '2026-10-20',
+    createdAt: '2026-10-20',
+    updatedAt: '2026-10-20',
+    content: `# ==========================================
+# LEARNED: Object-Oriented Programming (OOP)
+# ==========================================
+
+# 1. Classes & Objects
+# A Class is a blueprint/template; an Object is an instantiation of a class.
+
+class Employee:
+    # Class Attribute: belongs directly to the class definition (shared by all instances)
+    company = "TechCorp Solutions"
+    employee_count = 0
+
+    # 2. Constructor (__init__)
+    # Automatically executes when a new object instance is created
+    def __init__(self, name: str, role: str, salary: int):
+        # Instance Attributes: unique to specific instances; take preference over class attributes
+        self.name = name
+        self.role = role
+        self.salary = salary
+        Employee.employee_count += 1
+
+    # 3. Methods & 'self'
+    # 'self' represents the specific object instance calling the method and is passed automatically
+    def get_details(self):
+        return f"{self.name} | Role: {self.role} | Company: {self.company} | Salary: \${self.salary}"
+
+    def give_raise(self, percentage: float):
+        self.salary += int(self.salary * (percentage / 100))
+        return f"{self.name}'s new salary: \${self.salary}"
+
+    # 4. Static Methods (@staticmethod)
+    # Decorated with @staticmethod when a method does not require access to instance (self) or class state
+    @staticmethod
+    def get_standard_work_hours():
+        return "Standard policy: 40 hours/week with flexible hours."
+
+
+# ------------------------------------------
+# Instantiating Objects and Verification
+# ------------------------------------------
+
+# Calling a static method directly on the class
+print("Policy:", Employee.get_standard_work_hours())
+
+# Creating instances (triggers __init__)
+emp1 = Employee("Akhand", "Software Engineer", 85000)
+emp2 = Employee("Sara", "DevOps Engineer", 90000)
+
+print(emp1.get_details())
+print(emp2.get_details())
+
+# Calling instance methods (self is passed automatically)
+print(emp1.give_raise(10))
+
+# Demonstrating Instance Attribute preference over Class Attribute:
+emp1.company = "TechCorp AI Labs"  # Overrides company attribute on emp1 instance only!
+print(f"emp1 company (instance override): {emp1.company}")
+print(f"emp2 company (retains class default): {emp2.company}")
+print(f"Total employees created: {Employee.employee_count}")
+`,
+  },
 ];
 
 export const virtualWorkspace = {
@@ -857,7 +931,15 @@ export const virtualWorkspace = {
         localStorage.setItem(WORKSPACE_STORAGE_KEY, JSON.stringify(INITIAL_WORKSPACE_FILES));
         return INITIAL_WORKSPACE_FILES;
       }
-      return JSON.parse(data);
+      const existing: VirtualFile[] = JSON.parse(data);
+      const existingIds = new Set(existing.map((f) => f.id));
+      const missingInitial = INITIAL_WORKSPACE_FILES.filter((f) => !existingIds.has(f.id));
+      if (missingInitial.length > 0) {
+        const merged = [...existing, ...missingInitial];
+        localStorage.setItem(WORKSPACE_STORAGE_KEY, JSON.stringify(merged));
+        return merged;
+      }
+      return existing;
     } catch {
       return INITIAL_WORKSPACE_FILES;
     }

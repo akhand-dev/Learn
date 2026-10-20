@@ -13,7 +13,15 @@ export const learningStorage = {
         localStorage.setItem(TOPICS_STORAGE_KEY, JSON.stringify(INITIAL_LEARNED_TOPICS));
         return INITIAL_LEARNED_TOPICS;
       }
-      return JSON.parse(data);
+      const existing: LearnedTopic[] = JSON.parse(data);
+      const existingIds = new Set(existing.map((t) => t.id));
+      const missingInitial = INITIAL_LEARNED_TOPICS.filter((t) => !existingIds.has(t.id));
+      if (missingInitial.length > 0) {
+        const merged = [...existing, ...missingInitial];
+        localStorage.setItem(TOPICS_STORAGE_KEY, JSON.stringify(merged));
+        return merged;
+      }
+      return existing;
     } catch {
       return INITIAL_LEARNED_TOPICS;
     }

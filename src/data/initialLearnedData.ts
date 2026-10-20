@@ -365,6 +365,35 @@ with open('test.txt', 'r') as f:
     tags: ['file-io', 'persistence', 'with-open'],
     dateLearned: '2026-10-18',
   },
+  {
+    id: 'topic-oop-classes-objects',
+    title: 'Object-Oriented Programming (Classes, Objects & Attributes)',
+    category: 'Object-Oriented (OOP)',
+    summary: 'Blueprint classes, object instantiation, class vs instance attributes, self parameter, static methods, and __init__() constructor.',
+    notes: 'A Class is a blueprint; an Object is an instantiation. Instance attributes take preference over class attributes. self represents the instance calling the method. @staticmethod defines methods without self. __init__() is the constructor dunder method.',
+    codeSnippet: `class Employee:
+    company = "TechCorp" # Class attribute
+
+    def __init__(self, name, salary):
+        self.name = name       # Instance attribute
+        self.salary = salary
+
+    def get_info(self):
+        return f"{self.name} works at {self.company} making \${self.salary}"
+
+    @staticmethod
+    def greet():
+        return "Welcome to the company portal!"
+
+emp = Employee("Akhand", 85000)
+print(Employee.greet())
+print(emp.get_info())`,
+    sampleOutput: `Welcome to the company portal!
+Akhand works at TechCorp making $85000`,
+    mastery: 'learning',
+    tags: ['oop', 'classes', 'objects', '__init__', 'self', 'staticmethod'],
+    dateLearned: '2026-10-20',
+  },
 ];
 
 export const INITIAL_USER_PROJECTS: UserProject[] = [

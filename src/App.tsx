@@ -81,7 +81,7 @@ export const App: React.FC = () => {
       />
 
       {/* Main Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <main className={`flex-1 w-full ${activeTab === 'vscode' ? 'max-w-[1920px] px-2 sm:px-4 py-2 mx-auto' : 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6'}`}>
         {activeTab === 'vscode' && (
           <VSCodeIDE initialFileId={selectedFileForIDE} />
         )}
