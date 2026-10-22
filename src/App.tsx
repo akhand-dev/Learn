@@ -81,7 +81,7 @@ export const App: React.FC = () => {
       />
 
       {/* Main Container */}
-      <main className={`flex-1 w-full ${activeTab === 'vscode' ? 'max-w-[1920px] px-2 sm:px-4 py-2 mx-auto' : 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6'}`}>
+      <main className={`flex-1 w-full ${activeTab === 'vscode' ? 'max-w-[1920px] px-3 sm:px-6 py-4 mx-auto' : 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10'}`}>
         {activeTab === 'vscode' && (
           <VSCodeIDE initialFileId={selectedFileForIDE} />
         )}
@@ -135,20 +135,24 @@ export const App: React.FC = () => {
         )}
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-slate-900 bg-slate-950/80 py-4 text-xs text-slate-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <div className="flex items-center space-x-2">
-            <span className="font-bold text-slate-400">akhand-dev / learned</span>
-            <span>•</span>
-            <span>VS Code Python Environment: <code className="text-sky-400">learned/</code> and <code className="text-indigo-400">projects/</code></span>
+      {/* Clean Spacious Footer */}
+      <footer className="border-t border-slate-900 bg-slate-950 py-6 text-xs text-slate-500">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center space-x-2 text-slate-400 font-mono text-[11px]">
+            <span className="font-bold text-white">akhand-dev</span>
+            <span>/</span>
+            <span className="text-sky-400">learned</span>
+            <span className="text-slate-600">·</span>
+            <span>VS Code Workspace with 21 Practice Scripts</span>
           </div>
-          <div className="flex items-center space-x-3 text-slate-400">
-            <span>Ctrl+S to Save</span>
-            <span>•</span>
-            <span>F5 to Run</span>
-            <span>•</span>
-            <span>Python 3.12</span>
+          <div className="flex items-center space-x-4 text-slate-400 font-mono text-[11px]">
+            <span>Save: Ctrl+S</span>
+            <span className="text-slate-600">·</span>
+            <span>Run: F5</span>
+            <span className="text-slate-600">·</span>
+            <span>Sidebar: Ctrl+B</span>
+            <span className="text-slate-600">·</span>
+            <span className="text-slate-300">Python 3.12</span>
           </div>
         </div>
       </footer>

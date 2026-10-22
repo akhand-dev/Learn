@@ -82,31 +82,31 @@ export const CountdownLab: React.FC = () => {
       : 0;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-10 sm:space-y-12">
       {/* Top Banner */}
-      <div className="bg-gradient-to-r from-slate-900 via-sky-950/40 to-slate-900 border border-slate-800 rounded-2xl p-6 relative overflow-hidden">
+      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-10 relative overflow-hidden shadow-xl">
         <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
           <Terminal className="w-48 h-48 text-sky-400" />
         </div>
         <div className="relative z-10 max-w-3xl">
-          <div className="inline-flex items-center space-x-2 px-2.5 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-300 text-xs font-mono mb-3">
+          <div className="flex items-center space-x-2 text-xs font-mono text-sky-400 mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
             <span>projects/countdown.py</span>
           </div>
-          <h2 className="text-2xl font-bold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
             Interactive Countdown & Live Stream Visualizer
           </h2>
-          <p className="mt-2 text-sm text-slate-300 leading-relaxed">
-            This project explores Python’s <code className="text-sky-300 bg-sky-950/60 px-1.5 py-0.5 rounded font-mono">time.sleep()</code>, loop sequences with <code className="text-sky-300 bg-sky-950/60 px-1.5 py-0.5 rounded font-mono">range(x + 1)</code>, and overriding <code className="text-sky-300 bg-sky-950/60 px-1.5 py-0.5 rounded font-mono">end='...'</code> with <code className="text-sky-300 bg-sky-950/60 px-1.5 py-0.5 rounded font-mono">flush=True</code> to stream real-time command-line updates without newlines.
+          <p className="mt-3 text-sm text-slate-300 leading-relaxed">
+            This project explores Python’s <code className="text-sky-300 font-mono">time.sleep()</code>, loop sequences with <code className="text-sky-300 font-mono">range(x + 1)</code>, and overriding <code className="text-sky-300 font-mono">end='...'</code> with <code className="text-sky-300 font-mono">flush=True</code> to stream real-time command-line updates without newlines.
           </p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left: Interactive Controls and Status (7 cols) */}
         <div className="lg:col-span-7 space-y-6">
           {/* Main Display Card */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-xl">
             <div className="flex items-center justify-between border-b border-slate-800/80 pb-4 mb-6">
               <div>
                 <span className="text-xs uppercase tracking-wider text-slate-400 font-semibold">

@@ -89,25 +89,25 @@ export const PrintMasteryLab: React.FC<PrintMasteryLabProps> = ({
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-10 sm:space-y-12">
       {/* Top Banner */}
-      <div className="bg-gradient-to-r from-slate-900 via-indigo-950/30 to-slate-900 border border-slate-800 rounded-2xl p-6 relative overflow-hidden">
+      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-10 relative overflow-hidden shadow-xl">
         <div className="max-w-3xl">
-          <div className="inline-flex items-center space-x-2 px-2.5 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-mono mb-3">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="flex items-center space-x-2 text-xs font-mono text-indigo-400 mb-3">
+            <Sparkles className="w-4 h-4" />
             <span>python/start1.py</span>
           </div>
-          <h2 className="text-2xl font-bold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
             Python Print() Deep-Dive & Mechanics Lab
           </h2>
-          <p className="mt-2 text-sm text-slate-300 leading-relaxed">
-            Every feature from Akhand’s <code className="text-indigo-300 bg-indigo-950/60 px-1.5 py-0.5 rounded font-mono">start1.py</code> made fully interactive. Discover how Python controls argument separation, newlines, buffer flushing, file streams, F-string interpolation, unpacking operators, and OOP object string representation.
+          <p className="mt-3 text-sm text-slate-300 leading-relaxed">
+            Every feature from Akhand’s <code className="text-indigo-300 font-mono">start1.py</code> made fully interactive. Discover how Python controls argument separation, newlines, buffer flushing, file streams, F-string interpolation, unpacking operators, and OOP object string representation.
           </p>
         </div>
       </div>
 
       {/* Navigation Pills */}
-      <div className="flex items-center space-x-1.5 overflow-x-auto pb-2 scrollbar-none">
+      <div className="flex items-center space-x-2 overflow-x-auto pb-2 scrollbar-none">
         {[
           { id: 'sep', label: '1. Sep (Separator)', icon: Sliders },
           { id: 'end', label: '2. End Parameter', icon: ArrowRight },
@@ -124,13 +124,13 @@ export const PrintMasteryLab: React.FC<PrintMasteryLabProps> = ({
             <button
               key={sec.id}
               onClick={() => setActiveSection(sec.id as any)}
-              className={`flex items-center space-x-2 px-3 py-2 rounded-xl text-xs font-medium transition cursor-pointer whitespace-nowrap ${
+              className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl text-xs font-medium transition cursor-pointer whitespace-nowrap ${
                 isActive
                   ? 'bg-sky-500 text-slate-950 font-bold shadow-md shadow-sky-500/20'
-                  : 'bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800'
+                  : 'bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800 hover:border-slate-700'
               }`}
             >
-              <Icon className="w-3.5 h-3.5" />
+              <Icon className="w-4 h-4" />
               <span>{sec.label}</span>
             </button>
           );
@@ -138,7 +138,7 @@ export const PrintMasteryLab: React.FC<PrintMasteryLabProps> = ({
       </div>
 
       {/* Section Content */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
+      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-xl">
         {/* 1. SEP PARAMETER */}
         {activeSection === 'sep' && (
           <div className="space-y-6">

@@ -188,28 +188,28 @@ export const MyProjectsLab: React.FC<MyProjectsLabProps> = ({ onOpenInRunner: _o
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-10 sm:space-y-12">
       {/* Top Banner */}
-      <div className="bg-gradient-to-r from-slate-900 via-indigo-950/30 to-slate-900 border border-slate-800 rounded-2xl p-6 relative overflow-hidden">
+      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-10 relative overflow-hidden shadow-xl">
         <div className="max-w-3xl">
-          <div className="inline-flex items-center space-x-2 px-2.5 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-mono mb-3">
-            <FolderCode className="w-3.5 h-3.5" />
+          <div className="flex items-center space-x-2 text-xs font-mono text-indigo-400 mb-3">
+            <FolderCode className="w-4 h-4" />
             <span>Project Storage & Practice Workspace</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
             My Python Practice Projects
           </h2>
-          <p className="mt-2 text-sm text-slate-300 leading-relaxed">
+          <p className="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed">
             Store, code, practice, and test all your Python projects in one central hub. From CLI tools like <code className="text-indigo-300 font-mono">countdown.py</code> to calculators and games, keep all your learning scripts saved and runnable.
           </p>
         </div>
       </div>
 
       {/* Starter Templates Bar */}
-      <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
-        <div className="flex items-center justify-between">
-          <span className="text-xs font-semibold text-slate-300 flex items-center space-x-1.5">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+      <div className="p-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-lg space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <span className="text-xs font-semibold text-slate-300 flex items-center space-x-2">
+            <Sparkles className="w-4 h-4 text-amber-400" />
             <span>Practice Project Templates (Click to add to your projects):</span>
           </span>
           <button
@@ -222,30 +222,30 @@ export const MyProjectsLab: React.FC<MyProjectsLabProps> = ({ onOpenInRunner: _o
               setModalStatus('in-progress');
               setIsModalOpen(true);
             }}
-            className="flex items-center space-x-1 px-3 py-1 bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs rounded-lg transition cursor-pointer"
+            className="flex items-center space-x-1.5 px-4 py-2 bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs rounded-xl transition cursor-pointer shadow-md shadow-sky-500/20 shrink-0 self-start sm:self-auto"
           >
-            <Plus className="w-3.5 h-3.5" />
+            <Plus className="w-4 h-4" />
             <span>+ Store New Project</span>
           </button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-1">
           {PROJECT_TEMPLATES.map((tmpl) => (
             <button
               key={tmpl.title}
               onClick={() => handleAddTemplate(tmpl)}
-              className="p-2.5 rounded-lg bg-slate-950/70 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-left transition cursor-pointer flex flex-col justify-between"
+              className="p-4 rounded-xl bg-slate-950/70 hover:bg-slate-800/80 border border-slate-800 hover:border-slate-700 text-left transition cursor-pointer flex flex-col justify-between space-y-3"
             >
               <div>
                 <div className="text-xs font-bold text-white flex items-center justify-between">
                   <span>{tmpl.title}</span>
                   <span className="text-[10px] text-sky-400 font-mono">{tmpl.category}</span>
                 </div>
-                <p className="text-[11px] text-slate-400 mt-0.5 line-clamp-1">{tmpl.description}</p>
+                <p className="text-xs text-slate-400 mt-1 line-clamp-2 leading-relaxed">{tmpl.description}</p>
               </div>
-              <div className="text-[10px] text-amber-300 font-mono mt-2 flex items-center space-x-1">
-                <FileCode className="w-3 h-3" />
-                <span>{tmpl.fileName}</span>
+              <div className="text-[11px] text-amber-300 font-mono flex items-center space-x-1.5 pt-2 border-t border-slate-800/60">
+                <FileCode className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                <span className="truncate">{tmpl.fileName}</span>
               </div>
             </button>
           ))}
@@ -253,24 +253,24 @@ export const MyProjectsLab: React.FC<MyProjectsLabProps> = ({ onOpenInRunner: _o
       </div>
 
       {/* Two Column Layout: Project List (Sidebar) & Code Editor + Terminal */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Projects Sidebar (4 cols) */}
-        <div className="lg:col-span-4 space-y-3">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800 mb-3">
+        <div className="lg:col-span-4 space-y-4">
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
               <span className="text-xs font-bold uppercase tracking-wider text-slate-400 font-mono">
                 Stored Projects ({projects.length})
               </span>
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="text-xs text-sky-400 hover:text-sky-300 flex items-center space-x-1 cursor-pointer"
+                className="text-xs text-sky-400 hover:text-sky-300 flex items-center space-x-1 cursor-pointer font-semibold"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span>New</span>
               </button>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-3">
               {projects.map((proj) => {
                 const isSelected = proj.id === activeProject?.id;
                 const isDone = proj.status === 'completed';

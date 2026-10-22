@@ -77,25 +77,25 @@ export const OperatorsDataLab: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-10 sm:space-y-12">
       {/* Top Banner */}
-      <div className="bg-gradient-to-r from-slate-900 via-amber-950/30 to-slate-900 border border-slate-800 rounded-2xl p-6 relative overflow-hidden">
+      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-10 relative overflow-hidden shadow-xl">
         <div className="max-w-3xl">
-          <div className="inline-flex items-center space-x-2 px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs font-mono mb-3">
-            <Binary className="w-3.5 h-3.5" />
+          <div className="flex items-center space-x-2 text-xs font-mono text-amber-400 mb-3">
+            <Binary className="w-4 h-4" />
             <span>python/print.py</span>
           </div>
-          <h2 className="text-2xl font-bold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
             Arithmetic, Assignment Operators & Python Ecosystem
           </h2>
-          <p className="mt-2 text-sm text-slate-300 leading-relaxed">
+          <p className="mt-3 text-sm text-slate-300 leading-relaxed">
             Directly ported from Akhand’s <code className="text-amber-300 bg-amber-950/60 px-1.5 py-0.5 rounded font-mono">print.py</code>: interactive arithmetic evaluation, step-by-step variable mutation debugger, interactive dictionary inspection, and pip package integrations.
           </p>
         </div>
       </div>
 
       {/* Navigation Pills */}
-      <div className="flex items-center space-x-1.5 overflow-x-auto pb-2 scrollbar-none">
+      <div className="flex items-center space-x-2 overflow-x-auto pb-2 scrollbar-none">
         {[
           { id: 'arithmetic', label: '1. Arithmetic Operators', icon: Calculator },
           { id: 'assignment', label: '2. Assignment Mutation Stepper', icon: RefreshCw },
@@ -108,13 +108,13 @@ export const OperatorsDataLab: React.FC = () => {
             <button
               key={sec.id}
               onClick={() => setActiveSection(sec.id as any)}
-              className={`flex items-center space-x-2 px-3.5 py-2 rounded-xl text-xs font-medium transition cursor-pointer whitespace-nowrap ${
+              className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition cursor-pointer whitespace-nowrap ${
                 isActive
                   ? 'bg-amber-500 text-slate-950 font-bold shadow-md shadow-amber-500/20'
-                  : 'bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800'
+                  : 'bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800 hover:border-slate-700'
               }`}
             >
-              <Icon className="w-3.5 h-3.5" />
+              <Icon className="w-4 h-4" />
               <span>{sec.label}</span>
             </button>
           );
@@ -122,22 +122,22 @@ export const OperatorsDataLab: React.FC = () => {
       </div>
 
       {/* Section Content */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
+      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-xl space-y-8">
         {/* 1. ARITHMETIC OPERATORS */}
         {activeSection === 'arithmetic' && (
-          <div className="space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="space-y-8">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-6 border-b border-slate-800/80">
               <div>
-                <h3 className="text-lg font-bold text-white">
+                <h3 className="text-xl font-bold text-white">
                   Arithmetic Operators (<code className="text-amber-400 font-mono">+, -, *, /, %, **</code>)
                 </h3>
-                <p className="text-xs text-slate-400 mt-1">
+                <p className="text-xs sm:text-sm text-slate-400 mt-1.5">
                   Adjust <code className="text-slate-200 font-mono">a</code> and <code className="text-slate-200 font-mono">b</code> to see Python's exact evaluation logic.
                 </p>
               </div>
 
               {/* Editable inputs */}
-              <div className="flex items-center space-x-3 bg-slate-950 p-2 rounded-xl border border-slate-800">
+              <div className="flex items-center space-x-3 bg-slate-950 px-4 py-2.5 rounded-xl border border-slate-800">
                 <div className="flex items-center space-x-1">
                   <span className="text-xs font-mono text-slate-400">a =</span>
                   <input
@@ -250,26 +250,26 @@ export const OperatorsDataLab: React.FC = () => {
             </div>
 
             {/* Primitive Types Reference */}
-            <div className="p-4 rounded-xl bg-slate-950 border border-slate-800">
-              <div className="text-xs font-semibold text-slate-300 mb-2">
+            <div className="p-6 sm:p-7 rounded-2xl bg-slate-950 border border-slate-800 space-y-4">
+              <div className="text-sm font-semibold text-slate-300">
                 Python Primitive Data Types (from comment in <code className="text-amber-400 font-mono">print.py</code>: <span className="text-slate-400">--int, float, bool, None</span>)
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
-                <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800">
-                  <div className="text-sky-400 font-bold">int</div>
-                  <div className="text-slate-400 text-[11px]">e.g. 10, -5, 42</div>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs sm:text-sm font-mono">
+                <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
+                  <div className="text-sky-400 font-bold text-sm">int</div>
+                  <div className="text-slate-400 text-xs">e.g. 10, -5, 42</div>
                 </div>
-                <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800">
-                  <div className="text-emerald-400 font-bold">float</div>
-                  <div className="text-slate-400 text-[11px]">e.g. 10.0, 48.9487</div>
+                <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
+                  <div className="text-emerald-400 font-bold text-sm">float</div>
+                  <div className="text-slate-400 text-xs">e.g. 10.0, 48.9487</div>
                 </div>
-                <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800">
-                  <div className="text-amber-400 font-bold">bool</div>
-                  <div className="text-slate-400 text-[11px]">True, False</div>
+                <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
+                  <div className="text-amber-400 font-bold text-sm">bool</div>
+                  <div className="text-slate-400 text-xs">True, False</div>
                 </div>
-                <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800">
-                  <div className="text-purple-400 font-bold">NoneType</div>
-                  <div className="text-slate-400 text-[11px]">None</div>
+                <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
+                  <div className="text-purple-400 font-bold text-sm">NoneType</div>
+                  <div className="text-slate-400 text-xs">None</div>
                 </div>
               </div>
             </div>
@@ -278,40 +278,40 @@ export const OperatorsDataLab: React.FC = () => {
 
         {/* 2. ASSIGNMENT STEPPER */}
         {activeSection === 'assignment' && (
-          <div className="space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="space-y-8">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-6 border-b border-slate-800/80">
               <div>
-                <h3 className="text-lg font-bold text-white">
+                <h3 className="text-xl font-bold text-white">
                   Assignment Operators Debugger (<code className="text-amber-400 font-mono">+=, -=, *=, /=</code>)
                 </h3>
-                <p className="text-xs text-slate-400 mt-1">
+                <p className="text-xs sm:text-sm text-slate-400 mt-1.5">
                   Step through lines 16–30 of <code className="text-slate-200 font-mono">print.py</code> to inspect in-place memory mutation.
                 </p>
               </div>
 
               {/* Stepper controls */}
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-3">
                 <button
                   onClick={handleResetSteps}
-                  className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium flex items-center space-x-1 cursor-pointer"
+                  className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs sm:text-sm font-medium flex items-center space-x-1.5 cursor-pointer transition"
                 >
-                  <RotateCcw className="w-3.5 h-3.5" />
+                  <RotateCcw className="w-4 h-4" />
                   <span>Restart</span>
                 </button>
                 <button
                   onClick={handleNextStep}
                   disabled={assignmentStep >= assignmentStepsList.length - 1}
-                  className="px-4 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold flex items-center space-x-1.5 cursor-pointer disabled:opacity-50"
+                  className="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs sm:text-sm font-bold flex items-center space-x-2 cursor-pointer disabled:opacity-50 transition shadow-md shadow-amber-500/20"
                 >
                   <span>Step Next Line</span>
-                  <Play className="w-3.5 h-3.5 fill-current" />
+                  <Play className="w-4 h-4 fill-current" />
                 </button>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
               {/* Steps timeline (7 cols) */}
-              <div className="lg:col-span-7 space-y-2">
+              <div className="lg:col-span-7 space-y-3">
                 {assignmentStepsList.map((item, idx) => {
                   const isCurrent = assignmentStep === idx;
                   const isPast = assignmentStep > idx;
@@ -319,7 +319,7 @@ export const OperatorsDataLab: React.FC = () => {
                     <div
                       key={item.step}
                       onClick={() => setAssignmentStep(idx)}
-                      className={`p-3 rounded-xl border transition-all cursor-pointer flex items-center justify-between ${
+                      className={`p-4 rounded-xl border transition-all cursor-pointer flex items-center justify-between ${
                         isCurrent
                           ? 'bg-amber-500/15 border-amber-500/50 shadow-md shadow-amber-500/10'
                           : isPast
@@ -327,9 +327,9 @@ export const OperatorsDataLab: React.FC = () => {
                           : 'bg-slate-950/20 border-slate-850 opacity-40 text-slate-500'
                       }`}
                     >
-                      <div className="flex items-center space-x-3">
+                      <div className="flex items-center space-x-3.5">
                         <span
-                          className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-mono font-bold ${
+                          className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-mono font-bold ${
                             isCurrent
                               ? 'bg-amber-500 text-slate-950'
                               : isPast
@@ -340,17 +340,17 @@ export const OperatorsDataLab: React.FC = () => {
                           {item.step}
                         </span>
                         <div>
-                          <div className="font-mono text-xs font-bold text-white">{item.code}</div>
-                          <div className="text-[11px] text-slate-400">{item.action}</div>
+                          <div className="font-mono text-xs sm:text-sm font-bold text-white">{item.code}</div>
+                          <div className="text-xs text-slate-400 mt-0.5">{item.action}</div>
                         </div>
                       </div>
 
                       <div className="text-right font-mono">
-                        <div className="text-xs text-amber-300 font-semibold">
+                        <div className="text-xs sm:text-sm text-amber-300 font-semibold">
                           c = {item.value}
                         </div>
                         {item.output !== null && (
-                          <div className="text-[10px] text-emerald-400">prints: {item.output}</div>
+                          <div className="text-xs text-emerald-400 mt-0.5">prints: {item.output}</div>
                         )}
                       </div>
                     </div>
@@ -359,8 +359,8 @@ export const OperatorsDataLab: React.FC = () => {
               </div>
 
               {/* State Inspector Card (5 cols) */}
-              <div className="lg:col-span-5 space-y-4">
-                <div className="bg-slate-950 rounded-2xl border border-slate-800 p-5 space-y-4">
+              <div className="lg:col-span-5 space-y-6">
+                <div className="bg-slate-950 rounded-2xl border border-slate-800 p-6 sm:p-7 space-y-6">
                   <div className="text-xs uppercase tracking-wider font-semibold text-slate-400 flex items-center justify-between">
                     <span>Variable State Inspector</span>
                     <span className="font-mono text-amber-400">
@@ -368,7 +368,7 @@ export const OperatorsDataLab: React.FC = () => {
                     </span>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between">
+                  <div className="p-5 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between">
                     <div>
                       <span className="text-xs text-slate-400 font-mono">Variable c:</span>
                       <div className="text-3xl font-extrabold font-mono text-amber-400 mt-1">
@@ -386,7 +386,7 @@ export const OperatorsDataLab: React.FC = () => {
                   {/* Terminal stdout up to current step */}
                   <div>
                     <div className="text-xs text-slate-400 font-mono mb-2">Terminal stdout log:</div>
-                    <div className="bg-black/60 p-3 rounded-xl border border-slate-800 font-mono text-xs text-emerald-400 min-h-[100px]">
+                    <div className="bg-black/60 p-4 rounded-xl border border-slate-800 font-mono text-xs sm:text-sm text-emerald-400 min-h-[140px] leading-relaxed">
                       {assignmentStepsList
                         .slice(0, assignmentStep + 1)
                         .filter((s) => s.output !== null)
@@ -403,28 +403,28 @@ export const OperatorsDataLab: React.FC = () => {
 
         {/* 3. DICTIONARIES & METHODS */}
         {activeSection === 'dictionaries' && (
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-lg font-bold text-white flex items-center space-x-2">
+          <div className="space-y-8">
+            <div className="pb-6 border-b border-slate-800/80">
+              <h3 className="text-xl font-bold text-white flex items-center space-x-2">
                 <span>Dictionaries (<code className="text-amber-400 font-mono">dict</code>)</span>
               </h3>
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-xs sm:text-sm text-slate-400 mt-1.5 leading-relaxed">
                 From comment in <code className="text-slate-200 font-mono">print.py</code>: <span className="text-slate-300 italic">"dictories - unordered , mutable, indexed key_value. methods = ['method1':'items()','method2':'keys()']"</span>
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
               {/* Dictionary Viewer & Editor (7 cols) */}
-              <div className="lg:col-span-7 space-y-4">
-                <div className="p-4 bg-slate-950 rounded-xl border border-slate-800 space-y-3">
-                  <div className="text-xs font-semibold text-slate-300">Live Dictionary Key-Value Pairs:</div>
-                  <div className="space-y-2">
+              <div className="lg:col-span-7 space-y-6">
+                <div className="p-6 sm:p-7 bg-slate-950 rounded-2xl border border-slate-800 space-y-4">
+                  <div className="text-sm font-semibold text-slate-300">Live Dictionary Key-Value Pairs:</div>
+                  <div className="space-y-3">
                     {Object.entries(dictMethods).map(([k, v]) => (
                       <div
                         key={k}
-                        className="flex items-center justify-between p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-mono"
+                        className="flex items-center justify-between p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs sm:text-sm font-mono"
                       >
-                        <div className="flex items-center space-x-2">
+                        <div className="flex items-center space-x-2.5">
                           <span className="text-amber-300">"{k}"</span>
                           <span className="text-slate-500">:</span>
                           <span className="text-emerald-300">"{v}"</span>
@@ -435,7 +435,7 @@ export const OperatorsDataLab: React.FC = () => {
                             delete updated[k];
                             setDictMethods(updated);
                           }}
-                          className="text-slate-500 hover:text-rose-400 text-xs cursor-pointer px-2"
+                          className="text-slate-500 hover:text-rose-400 text-xs sm:text-sm cursor-pointer px-2.5 py-1 rounded hover:bg-slate-800 transition"
                         >
                           ✕
                         </button>
@@ -444,20 +444,20 @@ export const OperatorsDataLab: React.FC = () => {
                   </div>
 
                   {/* Add key value */}
-                  <div className="flex items-center space-x-2 pt-2 border-t border-slate-800">
+                  <div className="flex flex-col sm:flex-row items-center gap-3 pt-3 border-t border-slate-800">
                     <input
                       type="text"
                       placeholder="key (e.g. method5)"
                       value={newKey}
                       onChange={(e) => setNewKey(e.target.value)}
-                      className="bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs font-mono text-white flex-1 focus:border-amber-400 focus:outline-none"
+                      className="bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-xs sm:text-sm font-mono text-white w-full sm:flex-1 focus:border-amber-400 focus:outline-none"
                     />
                     <input
                       type="text"
                       placeholder="value (e.g. pop())"
                       value={newVal}
                       onChange={(e) => setNewVal(e.target.value)}
-                      className="bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs font-mono text-white flex-1 focus:border-amber-400 focus:outline-none"
+                      className="bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-xs sm:text-sm font-mono text-white w-full sm:flex-1 focus:border-amber-400 focus:outline-none"
                     />
                     <button
                       onClick={() => {
@@ -467,7 +467,7 @@ export const OperatorsDataLab: React.FC = () => {
                           setNewVal('');
                         }
                       }}
-                      className="px-3 py-1.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs rounded-lg cursor-pointer whitespace-nowrap"
+                      className="w-full sm:w-auto px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs sm:text-sm rounded-xl cursor-pointer whitespace-nowrap transition shadow-md shadow-amber-500/20"
                     >
                       + Add Pair
                     </button>
@@ -476,28 +476,28 @@ export const OperatorsDataLab: React.FC = () => {
               </div>
 
               {/* Dict Methods Tester (5 cols) */}
-              <div className="lg:col-span-5 space-y-4">
-                <div className="bg-slate-950 rounded-xl border border-slate-800 p-4 space-y-3">
-                  <div className="text-xs font-semibold text-slate-300">Dictionary Built-in Methods:</div>
+              <div className="lg:col-span-5 space-y-6">
+                <div className="bg-slate-950 rounded-2xl border border-slate-800 p-6 sm:p-7 space-y-4">
+                  <div className="text-sm font-semibold text-slate-300">Dictionary Built-in Methods:</div>
 
-                  <div className="space-y-2">
-                    <div className="p-3 rounded-lg bg-slate-900 border border-slate-800 text-xs">
-                      <div className="font-mono text-amber-300 font-semibold mb-1">methods.keys()</div>
-                      <div className="font-mono text-emerald-400 text-[11px] bg-black/40 p-2 rounded">
+                  <div className="space-y-3">
+                    <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs sm:text-sm">
+                      <div className="font-mono text-amber-300 font-semibold mb-2">methods.keys()</div>
+                      <div className="font-mono text-emerald-400 text-xs bg-black/40 p-3 rounded-lg leading-relaxed">
                         dict_keys([{Object.keys(dictMethods).map((k) => `'${k}'`).join(', ')}])
                       </div>
                     </div>
 
-                    <div className="p-3 rounded-lg bg-slate-900 border border-slate-800 text-xs">
-                      <div className="font-mono text-amber-300 font-semibold mb-1">methods.values()</div>
-                      <div className="font-mono text-emerald-400 text-[11px] bg-black/40 p-2 rounded">
+                    <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs sm:text-sm">
+                      <div className="font-mono text-amber-300 font-semibold mb-2">methods.values()</div>
+                      <div className="font-mono text-emerald-400 text-xs bg-black/40 p-3 rounded-lg leading-relaxed">
                         dict_values([{Object.values(dictMethods).map((v) => `'${v}'`).join(', ')}])
                       </div>
                     </div>
 
-                    <div className="p-3 rounded-lg bg-slate-900 border border-slate-800 text-xs">
-                      <div className="font-mono text-amber-300 font-semibold mb-1">methods.items()</div>
-                      <div className="font-mono text-emerald-400 text-[11px] bg-black/40 p-2 rounded">
+                    <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs sm:text-sm">
+                      <div className="font-mono text-amber-300 font-semibold mb-2">methods.items()</div>
+                      <div className="font-mono text-emerald-400 text-xs bg-black/40 p-3 rounded-lg leading-relaxed">
                         dict_items([{Object.entries(dictMethods).map(([k, v]) => `('${k}', '${v}')`).join(', ')}])
                       </div>
                     </div>
@@ -510,42 +510,42 @@ export const OperatorsDataLab: React.FC = () => {
 
         {/* 4. PIP & MODULES */}
         {activeSection === 'ecosystem' && (
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-lg font-bold text-white flex items-center space-x-2">
+          <div className="space-y-8">
+            <div className="pb-6 border-b border-slate-800/80">
+              <h3 className="text-xl font-bold text-white flex items-center space-x-2">
                 <span>Modules & The Python Package Index (<code className="text-amber-400 font-mono">pip</code>)</span>
               </h3>
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-xs sm:text-sm text-slate-400 mt-1.5 leading-relaxed">
                 From notes in <code className="text-slate-200 font-mono">print.py</code>: <span className="text-slate-300 italic">"#module -- code written to be reused. #pip -- python install manager -- pip install flask, pip install pyjokes, pip pyttsx3"</span>
               </p>
             </div>
 
             {/* Pyjokes live generator */}
-            <div className="p-5 rounded-2xl bg-gradient-to-br from-slate-950 via-slate-900 to-amber-950/20 border border-amber-500/30 space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2 text-amber-400 font-mono text-xs font-bold">
+            <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-slate-950 via-slate-900 to-amber-950/20 border border-amber-500/30 space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div className="flex items-center space-x-2 text-amber-400 font-mono text-xs sm:text-sm font-bold">
                   <Sparkles className="w-4 h-4" />
                   <span>pip install pyjokes (Interactive Simulator)</span>
                 </div>
                 <button
                   onClick={getNewJoke}
-                  className="px-3 py-1 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center space-x-1.5 transition cursor-pointer"
+                  className="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs sm:text-sm flex items-center space-x-2 transition cursor-pointer shadow-md shadow-amber-500/20"
                 >
                   <RefreshCw className="w-3.5 h-3.5" />
                   <span>pyjokes.get_joke()</span>
                 </button>
               </div>
 
-              <div className="p-4 rounded-xl bg-black/50 border border-slate-800 flex items-start space-x-3">
-                <Quote className="w-5 h-5 text-amber-400/80 shrink-0 mt-0.5" />
-                <p className="font-mono text-sm text-amber-200 italic leading-relaxed">
+              <div className="p-5 rounded-xl bg-black/50 border border-slate-800 flex items-start space-x-4">
+                <Quote className="w-6 h-6 text-amber-400/80 shrink-0 mt-0.5" />
+                <p className="font-mono text-sm sm:text-base text-amber-200 italic leading-relaxed">
                   "{currentJoke}"
                 </p>
               </div>
             </div>
 
             {/* Modules Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
                 {
                   pkg: 'flask',
@@ -568,22 +568,22 @@ export const OperatorsDataLab: React.FC = () => {
               ].map((m) => (
                 <div
                   key={m.pkg}
-                  className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2 flex flex-col justify-between"
+                  className="p-6 rounded-2xl bg-slate-950 border border-slate-800 space-y-3 flex flex-col justify-between"
                 >
-                  <div className="space-y-1.5">
+                  <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="font-mono font-bold text-white text-sm">{m.pkg}</span>
-                      <span className="text-[10px] font-mono text-sky-400 bg-sky-950/60 px-2 py-0.5 rounded border border-sky-800/40">
+                      <span className="font-mono font-bold text-white text-base">{m.pkg}</span>
+                      <span className="text-[11px] font-mono text-sky-400 bg-sky-950/60 px-2 py-0.5 rounded border border-sky-800/40">
                         pip package
                       </span>
                     </div>
-                    <code className="text-xs font-mono text-amber-400 bg-slate-900 px-2 py-1 rounded block">
+                    <code className="text-xs font-mono text-amber-400 bg-slate-900 px-2.5 py-1.5 rounded-lg block">
                       $ {m.cmd}
                     </code>
-                    <p className="text-xs text-slate-400">{m.desc}</p>
+                    <p className="text-xs text-slate-400 leading-relaxed">{m.desc}</p>
                   </div>
 
-                  <pre className="text-[11px] font-mono text-slate-300 bg-slate-900/90 p-2.5 rounded-lg border border-slate-850 mt-2 overflow-x-auto whitespace-pre">
+                  <pre className="text-xs font-mono text-slate-300 bg-slate-900/90 p-3.5 rounded-xl border border-slate-850 mt-3 overflow-x-auto whitespace-pre leading-relaxed">
                     {m.code}
                   </pre>
                 </div>
@@ -591,19 +591,19 @@ export const OperatorsDataLab: React.FC = () => {
             </div>
 
             {/* input('enter your name:') simulation */}
-            <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-3">
-              <div className="text-xs font-semibold text-slate-300">
+            <div className="p-6 sm:p-7 rounded-2xl bg-slate-950 border border-slate-800 space-y-4">
+              <div className="text-sm font-semibold text-slate-300">
                 Line 31: <code className="text-amber-400 font-mono">x = input('enter your name:')</code>
               </div>
-              <div className="flex items-center space-x-3">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                 <input
                   type="text"
                   placeholder="Enter your name..."
                   value={userNameInput}
                   onChange={(e) => setUserNameInput(e.target.value)}
-                  className="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs font-mono text-white focus:border-amber-400 focus:outline-none w-64"
+                  className="bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-mono text-white focus:border-amber-400 focus:outline-none w-full sm:w-72"
                 />
-                <span className="text-xs font-mono text-emerald-400">
+                <span className="text-xs sm:text-sm font-mono text-emerald-400">
                   Variable x stored value: <span className="font-bold">"{userNameInput}"</span> (str)
                 </span>
               </div>
